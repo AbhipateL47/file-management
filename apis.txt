@@ -1,0 +1,70 @@
+# Run this first
+node your-script.js
+File Manager running at http://localhost:3000
+
+
+1. CREATE a file
+http://localhost:3000/?action=create&name=test.txt&content=HelloWorld
+Expected: File 'test.txt' created
+
+
+2. READ the file
+http://localhost:3000/?action=read&name=test.txt
+Expected:
+Content:
+
+HelloWorld
+
+
+3. DELETE the file
+http://localhost:3000/?action=delete&name=test.txt
+Expected: File 'test.txt' deleted
+
+
+4. LIST all files
+http://localhost:3000/?action=list
+Expected:
+Files:
+
+[file1.txt]
+[file2.txt]
+...etc
+
+
+5. RENAME a file
+(Make sure old.txt exists first)
+http://localhost:3000/?action=rename&oldname=old.txt&newname=new.txt
+Expected: Renamed 'old.txt' to 'new.txt'
+
+
+6. FILE METADATA
+http://localhost:3000/?action=meta&name=new.txt
+Expected:
+File: new.txt
+Size: XXX bytes
+Created: YYYY-MM-DD...
+Modified: YYYY-MM-DD...
+
+
+7. SYSTEM INFO
+http://localhost:3000/?action=systeminfo
+Expected:
+System Info
+User: [your_username]
+OS: [Your OS info]
+CPU Cores: X
+Free RAM: XXXX MB
+Uptime: XX.X minutes
+
+
+8. DEFAULT FALLBACK (no action)
+http://localhost:3000/
+Expected:
+Available actions: create, read, delete, list, rename, meta, systeminfo
+
+
+# BONUS: curl commands (terminal)
+
+curl "http://localhost:3000/?action=create&name=hi.txt&content=hey"
+curl "http://localhost:3000/?action=read&name=hi.txt"
+curl "http://localhost:3000/?action=delete&name=hi.txt"
